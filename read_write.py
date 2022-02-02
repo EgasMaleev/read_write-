@@ -3,24 +3,26 @@ path = os.getcwd()
 file_name = 'recipes.txt'
 full_path = os.path.join(path, file_name)
 cook_book = {}
-list = []
 slovar_2 = {}
+
 class Slovar:
-    def __init__(self, ingridient_name, quantity, measure):
+    def __init__(self, ingridient_name, quantity, measure, list):
         self.ingridient_name = ingridient_name
         self.quantity = quantity
         self.measure = measure
         self.slovar = {}
+        self.list = list
     def add_slovar(self):
         self.slovar['ingridient_name'] = self.ingridient_name
         self.slovar['quantity'] = self.quantity
         self.slovar['measure'] = self.measure
-        list.append(self.slovar)
+        self.list.append(self.slovar)
         print(self.slovar)
 
 with open(full_path, 'r', encoding='utf-8') as file:
     def read_recipe():
         dish_name = file.readline()
+        print(dish_name)
         number = int(file.readline())
         i = 0
         while i < number:
@@ -41,8 +43,20 @@ with open(full_path, 'r', encoding='utf-8') as file:
                             measure += symbol
                 else:
                     count += 1
-            slovar = Slovar(ingridient_name, quantity, measure)
+            list=[]
+            slovar = Slovar(ingridient_name, quantity, measure, list)
             slovar.add_slovar()
         slovar_2[dish_name] = list
+        # print(slovar_2)
     read_recipe()
-print(slovar_2)
+    # print('\n')
+    file.readline()
+    read_recipe()
+    # print('\n')
+    file.readline()
+    read_recipe()
+    # print('\n')
+    file.readline()
+    read_recipe()
+    # print('\n')
+
