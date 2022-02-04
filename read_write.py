@@ -16,7 +16,7 @@ class Slovar:
     def add_slovar(self):
         self.slovar['ingridient_name'] = self.ingridient_name
         self.slovar['quantity'] = self.quantity
-        self.slovar['measure'] = self.measure
+        self.slovar['measure'] = self.measure.rstrip()
         list.append(self.slovar)
 
 with open(full_path, 'r', encoding='utf-8') as file:
@@ -48,7 +48,7 @@ with open(full_path, 'r', encoding='utf-8') as file:
                     count += 1
             slovar = Slovar(ingridient_name, quantity, measure)
             slovar.add_slovar()
-        cook_book[dish_name] = list
+        cook_book[dish_name.rstrip()] = list
     read_recipe()
     list = []
     while (chislo_recipes < chislo):
