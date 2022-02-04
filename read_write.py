@@ -4,9 +4,9 @@ file_name = 'recipes.txt'
 full_path = os.path.join(path, file_name)
 cook_book = {}
 list = []
-slovar_2 ={}
 chislo = 0
 chislo_recipes = 0
+slovar = {}
 class Slovar:
     def __init__(self, ingridient_name, quantity, measure):
         self.ingridient_name = ingridient_name
@@ -57,3 +57,12 @@ with open(full_path, 'r', encoding='utf-8') as file:
             read_recipe()
             list = []
 print(cook_book)
+def get_shop_list_by_dishes(dishes, person_count):
+    for dish in dishes:
+        for ingridient in cook_book[dish]:
+            slovar_2 = {}
+            slovar_2['measure'] = ingridient['measure']
+            slovar_2['quantity'] = int(ingridient['quantity']) * person_count
+            slovar[ingridient['ingridient_name']] = slovar_2
+    print(slovar)
+get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2)
