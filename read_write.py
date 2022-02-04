@@ -61,8 +61,13 @@ def get_shop_list_by_dishes(dishes, person_count):
     for dish in dishes:
         for ingridient in cook_book[dish]:
             slovar_2 = {}
-            slovar_2['measure'] = ingridient['measure']
-            slovar_2['quantity'] = int(ingridient['quantity']) * person_count
-            slovar[ingridient['ingridient_name']] = slovar_2
+            slovar_2['quantity'] = 0
+            if ingridient['ingridient_name'] in slovar:
+                # slovar_2['quantity'] = slovar['ingridient_name']['quantity']
+                slovar[ingridient['ingridient_name']]['quantity'] += int(ingridient['quantity']) * person_count
+            else:
+                slovar_2['measure'] = ingridient['measure']
+                slovar_2['quantity'] = int(ingridient['quantity']) * person_count
+                slovar[ingridient['ingridient_name']] = slovar_2
     print(slovar)
 get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2)
